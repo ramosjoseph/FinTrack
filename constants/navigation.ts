@@ -1,11 +1,10 @@
 import {
   LayoutDashboard,
-  Wallet,
   CalendarDays,
-  Receipt,
+  Wallet,
+  Landmark,
   PiggyBank,
   Heart,
-  TrendingUp,
   Settings,
 } from "lucide-react";
 
@@ -16,11 +15,6 @@ export const navigation = [
     icon: LayoutDashboard,
   },
   {
-    title: "Payroll",
-    href: "/payroll",
-    icon: Wallet,
-  },
-  {
     title: "Attendance",
     href: "/attendance",
     icon: CalendarDays,
@@ -28,7 +22,12 @@ export const navigation = [
   {
     title: "Expenses",
     href: "/expenses",
-    icon: Receipt,
+    icon: Wallet,
+  },
+  {
+    title: "Payroll",
+    href: "/payroll",
+    icon: Landmark,
   },
   {
     title: "Savings",
@@ -41,13 +40,8 @@ export const navigation = [
     icon: Heart,
   },
   {
-    title: "Forecast",
-    href: "/forecast",
-    icon: TrendingUp,
-  },
-  {
     title: "Settings",
     href: "/settings",
     icon: Settings,
   },
-];
+] as const;
