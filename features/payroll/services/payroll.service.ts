@@ -32,18 +32,17 @@ export class PayrollService {
   static async save(
   userId: string,
   data: {
-    monthlySalary: number;
-    dailyBudget: number;
-    parentAllowance: number;
-    cutoffDay1: number;
-    cutoffDay2: number;
-    payday1: number;
-    payday2: number;
-    workDaysPerWeek: number;
-    workHoursPerDay: number;
-    monthlyWorkingDays: number;
-    employmentType: string;
-  }
+  monthlySalary: number;
+  dailyBudget: number;
+  parentAllowance: number;
+  cutoffDay1: number;
+  cutoffDay2: number;
+  payday1: number;
+  payday2: number;
+  workDaysPerWeek: number;
+  workHoursPerDay: number;
+  employmentType: string;
+}
 ) {
   const supabase = await createClient();
 
@@ -80,8 +79,6 @@ export class PayrollService {
         work_hours_per_day:
           data.workHoursPerDay,
 
-        monthly_working_days:
-          data.monthlyWorkingDays,
 
         employment_type:
           data.employmentType,

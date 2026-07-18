@@ -74,13 +74,11 @@ export default function SavingsProgressChart({
                 />
 
                 <Tooltip
-                  formatter={(
-                    value: number
-                  ) => [
-                    `${value}%`,
-                    "Progress",
-                  ]}
-                />
+  formatter={(value) => [
+    `${Number(value ?? 0)}%`,
+    "Progress",
+  ]}
+/>
 
                 <Bar
                   dataKey="progress"

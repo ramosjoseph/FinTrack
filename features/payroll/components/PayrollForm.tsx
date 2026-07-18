@@ -7,7 +7,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { payrollSchema } from "../validation/payroll-schema";
-import type { PayrollFormValues } from "../validation/payroll-schema";
+import { z } from "zod";
 
 import { savePayrollAction } from "../actions/save-payroll";
 
@@ -20,6 +20,7 @@ import { Label } from "@/components/ui/label";
 import { Spinner } from "@/components/ui/spinner";
 
 import type { PayrollSettings } from "../types/payroll";
+type PayrollFormValues = z.output<typeof payrollSchema>;
 
 interface PayrollFormProps {
   onSuccess?: () => void;
@@ -41,7 +42,11 @@ export default function PayrollForm({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<PayrollFormValues>({
+  } = useForm<
+  z.input<typeof payrollSchema>,
+  unknown,
+  PayrollFormValues
+>({
     resolver: zodResolver(payrollSchema),
 
     defaultValues: {

@@ -94,7 +94,10 @@ export default function ExpenseCategoryChart({
                   dataKey="value"
                   nameKey="name"
                   outerRadius={110}
-                  label={({ name, percent }) =>
+                  label={({
+                    name,
+                    percent = 0,
+                  }) =>
                     `${name} ${(percent * 100).toFixed(
                       0
                     )}%`
@@ -111,13 +114,14 @@ export default function ExpenseCategoryChart({
                 </Pie>
 
                 <Tooltip
-                  formatter={(
-                    value: number
-                  ) => [
-                    `₱${value.toLocaleString(
+                  formatter={(value) => [
+                    `₱${Number(
+                      value ?? 0
+                    ).toLocaleString(
                       "en-PH",
                       {
                         minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
                       }
                     )}`,
                     "Amount",

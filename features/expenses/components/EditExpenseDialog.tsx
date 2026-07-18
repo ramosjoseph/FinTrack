@@ -49,13 +49,13 @@ export default function EditExpenseDialog({
   const [isPending, startTransition] = useTransition();
 
   const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<ExpenseFormValues>({
-    resolver: zodResolver(expenseSchema),
+  register,
+  handleSubmit,
+  formState: { errors },
+} = useForm<ExpenseFormValues>({
+  resolver: zodResolver(expenseSchema) as any,
 
-    defaultValues: {
+  defaultValues: {
       expenseName: expense.expense_name,
       categoryId: expense.category_id,
       amount: Number(expense.amount),
@@ -167,11 +167,13 @@ export default function EditExpenseDialog({
             </Label>
 
             <Input
-              id="amount"
-              type="number"
-              step="0.01"
-              {...register("amount")}
-            />
+  id="amount"
+  type="number"
+  step="0.01"
+  {...register("amount", {
+    valueAsNumber: true,
+  })}
+/>
 
             {errors.amount && (
               <p className="text-sm text-destructive">
