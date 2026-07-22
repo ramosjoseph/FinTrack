@@ -16,11 +16,16 @@ export async function saveExpenseAction(formData: FormData) {
     });
 
     if (!parsed.success) {
-      return {
-        success: false,
-        error: parsed.error.issues[0]?.message ?? "Invalid input.",
-      };
-    }
+  console.error(
+    "EXPENSE VALIDATION:",
+    JSON.stringify(parsed.error.flatten(), null, 2)
+  );
+
+  return {
+    success: false,
+    error: JSON.stringify(parsed.error.flatten()),
+  };
+}
 
     await ExpenseService.createExpense(parsed.data);
 
