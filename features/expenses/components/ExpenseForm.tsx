@@ -8,6 +8,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 
 import {
   expenseSchema,
+  type ExpenseFormInput,
   type ExpenseFormValues,
 } from "../validation/expense-schema";
 
@@ -44,7 +45,7 @@ export default function ExpenseForm({
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ExpenseFormValues>({
+  } = useForm<ExpenseFormInput>({
     resolver: zodResolver(expenseSchema),
 
     defaultValues: {
@@ -56,7 +57,7 @@ export default function ExpenseForm({
     },
   });
 
-  async function onSubmit(values: ExpenseFormValues) {
+  async function onSubmit(values: ExpenseFormInput) {
     setServerError("");
     setServerSuccess("");
 
