@@ -154,7 +154,9 @@ export default function ExpenseForm({
                 id="amount"
                 type="number"
                 step="0.01"
-                {...register("amount")}
+                {...register("amount", {
+                valueAsNumber: true,
+                })}
               />
 
               {errors.amount && (

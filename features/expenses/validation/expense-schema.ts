@@ -10,7 +10,7 @@ export const expenseSchema = z.object({
     .string()
     .uuid("Please select a category."),
 
-  amount: z
+  amount: z.coerce
     .number()
     .positive("Amount must be greater than zero."),
 

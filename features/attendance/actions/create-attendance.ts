@@ -45,12 +45,14 @@ export async function createAttendanceAction(
       success: true,
     };
   } catch (error) {
-    console.error(error);
+  console.error("ATTENDANCE ERROR:", error);
 
-    return {
-      success: false,
-      error:
-        "Failed to save attendance.",
-    };
-  }
+  return {
+    success: false,
+    error:
+      error instanceof Error
+        ? error.message
+        : JSON.stringify(error),
+  };
+}
 }
